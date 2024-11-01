@@ -1,0 +1,131 @@
+/**
+ * Variables
+ */
+$border_color: #d1d5df;
+$border_width: .25rem;
+$padding_l: 1.75rem;
+$margin_b: $padding_l * 1.5;
+$inner_padding: $padding_l / 2;
+$title_font_size: 1.5rem;
+$meta_font_size: .8rem;
+$icon_width: 2rem;
+$border_radius: $border_width;
+
+/**
+ * Placeholders
+ */
+%transition {
+	transition: .2s all ease-in-out;
+}
+
+:root {
+	--icon-bg-color: $border_color;
+}
+	
+/**
+ * CSS styles
+ */
+section.wpt-timeline.wpt-theme-minimalist {
+	border-left:$border_width solid $border_color;
+	padding-left: $padding_l;
+
+	article.wpt-achievement {
+		$background: lighten( $border_color, 10% );
+		position: relative;
+		margin-top: $icon_width / 2;
+		margin-bottom: $margin_b;
+		background: $background;
+		padding: $inner_padding $inner_padding $inner_padding $inner_padding * 1.5;
+		border-radius: 0 $border_radius $border_radius $border_radius;
+
+		&:before {
+			$t: .6rem;
+			content:"";
+			display: block;
+			position: absolute;
+			width:$t;
+			height:$t;
+			top: 0;
+			left:-$t;
+			border-top: $t*1.5 solid $background;
+			border-left: $t solid transparent;
+			border-right: $t solid transparent;
+		}
+
+		&:last-of-type {
+			margin-bottom: $margin_b / 3;
+		}
+
+		header.wpt-title {
+			h2 {
+				font-size: $title_font_size;
+				margin:0;
+				padding:0;
+
+				a {
+					&:not(:hover) {
+						color: inherit;
+						text-decoration: inherit;
+					}
+				}
+
+				&:before {
+					display: none;
+				}
+			}
+		}
+
+		p.wpt-meta {
+			margin: .5em 0 0;
+			font-size: $meta_font_size;
+			opacity: .5;
+			font-style: italic;
+
+			span.wpt-date {
+				margin-right: 1em;
+			}
+
+			span.wpt-tags {
+				display: inline;
+			}
+
+			i.fa {
+				opacity:.75;
+			}
+		}
+
+		div.wpt-summary {
+			
+		}
+
+		footer.wpt-read-more-button {
+			margin-top: 1rem;
+		}
+
+		div.wpt-icon {
+			$w: $icon_width;
+			font-size: $w*0.6;
+			background-color: $border_color;
+			background-color: var(--icon-bg-color);
+			line-height: $w;
+			width:$w;
+			height:$w;
+			color:#fff;
+			text-align: center;
+			border-radius:100%;
+			position: absolute;
+			left: - ( $padding_l + ( $w / 2 ) + ( $border_width / 2 ) );
+			//top: $inner_padding;
+			top: - $w / 2.5;
+			z-index:20;
+			box-shadow: 0px 0px 0px $border_width/2 rgba( #fff, .75 );
+		}
+
+		&:hover {
+			div.wpt-icon {
+				@extend %transition;
+				box-shadow: 0px 0px 0px $border_width/2 var(--icon-bg-color);
+			}
+		}
+	}
+}
